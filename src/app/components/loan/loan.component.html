@@ -1,0 +1,14 @@
+<button mat-stroked-button class="identification2" [routerLink]="['/']">Identification</button>
+
+<img class="userPicture" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+<mat-card>
+  <mat-selection-list #shoes>
+    <mat-list-option *ngFor="let shoe of tools">
+      {{shoe}}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <p>
+    Options selected: {{shoes.selectedOptions.selected.length}}
+  </p>
+</mat-card>
