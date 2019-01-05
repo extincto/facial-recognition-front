@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Itools } from 'src/app/models/ITools';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { ITools } from 'src/app/models/ITools';
 import { ToolService } from 'src/app/services/tools/tool.service';
 
 @Component({
@@ -9,12 +8,10 @@ import { ToolService } from 'src/app/services/tools/tool.service';
   styleUrls: ['./loan.component.scss']
 })
 export class LoanComponent implements OnInit {
-  toolList: Itools[] = [];
-  tools: string[] = ['Mousqueton', 'Gants intervention', 'Brassard de sécurité', 'porte menottes', 'Bandeau agent de sécurité cynophile',
-'Talkies walkies', 'Lampe torche', 'kit oreillette', 'Tasers', 'Bombes lacrymogènes'];
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  toolList: ITools;
+  Id: number;
+  Name: string;
+  Quantity: number;
 
   constructor(private toolService: ToolService) { }
 
@@ -23,8 +20,9 @@ export class LoanComponent implements OnInit {
   }
 
   getTools() {
-    this.toolService.tools().subscribe((data) => {
-      this.toolList.push(data);
+    this.toolService.tools().subscribe((tools) => {
+      this.toolList = tools;
+
     });
   }
 

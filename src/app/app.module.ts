@@ -30,12 +30,14 @@ import {
 } from '@angular/material';
 import { LoanComponent } from './components/loan/loan.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoanComponent
+    LoanComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,

@@ -2,13 +2,13 @@
 
 <img class="userPicture" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
 <mat-card>
-  <mat-selection-list #shoes>
-    <mat-list-option *ngFor="let shoe of tools">
-      {{shoe}}
+  <mat-selection-list #t>
+    <mat-list-option *ngFor="let tool of toolList">
+      {{tool.name}}
     </mat-list-option>
   </mat-selection-list>
 
   <p>
-    Options selected: {{shoes.selectedOptions.selected.length}}
+    Options selected: {{t.selectedOptions.selected.length}}
   </p>
 </mat-card>

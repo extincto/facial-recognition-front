@@ -1,4 +1,5 @@
-export interface Itools {
-    Name: string;
-    Quantity: number;
-  }
+export interface ITools {
+  id: number;
+  name: string;
+  quantity: number;
+}
