@@ -10,23 +10,47 @@ import { Subject, Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   private trigger: Subject<void> = new Subject<void>();
-  public webcamImage: WebcamImage = null;
+  public webcamImage: WebcamImage;
+  public multipleWebcamsAvailable = false;
+  public showWebcam = true;
+  public allowCameraSwitch = true;
+  public errors: WebcamInitError[] = [];
+  private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+
 
   constructor(private home: HomeComponent) { }
 
   ngOnInit() {
-    this.home.triggerSnapshot();
+    WebcamUtil.getAvailableVideoInputs()
+    .then((mediaDevices: MediaDeviceInfo[]) => {
+      this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
+    });
+    this.handleImage(this.webcamImage);
   }
+
 
   public triggerSnapshot(): void {
     this.trigger.next();
   }
+
+  public toggleWebcam(): void {
+    this.showWebcam = !this.showWebcam;
+  }
+
+  public handleInitError(error: WebcamInitError): void {
+    this.errors.push(error);
+  }
+
+  public handleImage(webcamImage: WebcamImage): void {
+    console.log('received webcam image', webcamImage);
+    this.webcamImage = webcamImage;
+  }
+
   public get triggerObservable(): Observable<void> {
     return this.trigger.asObservable();
   }
-  public handleImage(webcamImage: WebcamImage): void {
-    // tslint:disable-next-line:no-console
-    console.info('received webcam image', webcamImage);
-    this.webcamImage = webcamImage;
+
+  public get nextWebcamObservable(): Observable<boolean | string> {
+    return this.nextWebcam.asObservable();
   }
 }

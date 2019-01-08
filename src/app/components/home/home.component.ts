@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       });
+      // this.handleImage(this.webcamImage);
   }
 
   public triggerSnapshot(): void {
@@ -45,8 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
-    // tslint:disable-next-line:no-console
-    console.info('received webcam image', webcamImage);
+    console.log('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
   }
 

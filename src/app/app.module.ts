@@ -66,7 +66,8 @@ import { HeaderComponent } from './components/header/header.component';
     WebcamModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HeaderComponent,
+  HomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
