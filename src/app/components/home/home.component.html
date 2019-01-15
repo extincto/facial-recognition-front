@@ -3,7 +3,7 @@
 <div class="Cam">
 
   <div>
-    <webcam [height]="1400" [width]="1200" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+    <webcam [height]="1200" [width]="1000" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
       [videoOptions]="videoOptions" (initError)="handleInitError($event)"></webcam>
     <br />
     <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
@@ -11,7 +11,8 @@
   </div>
 </div>
 
-<!-- <div class="snapshot" *ngIf="webcamImage">
-  <h2>Bien joué !</h2>
+<div class="snapshot" *ngIf="webcamImage">
+  <h2>Photo Prise!</h2>
   <img [src]="webcamImage.imageAsDataUrl"/>
-</div> -->
+  <button mat-raised-button color="warn">retake</button>
+</div>

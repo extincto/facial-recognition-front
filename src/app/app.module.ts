@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import {WebcamModule} from 'ngx-webcam';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatToolbarModule,
@@ -40,6 +41,7 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

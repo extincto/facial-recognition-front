@@ -2,6 +2,9 @@
 <mat-toolbar-row >
   <span class="example-spacer"></span>
   <webcam [height]="1" [width]="2" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"> </webcam>
-  <button mat-stroked-button class="identification" (click)="triggerSnapshot();" [routerLink]="['loan']">S'identifier</button>
+  <form>
+      
+  <button mat-stroked-button class="identification" (click)="login(image64)" type="submit">S'identifier</button>
+</form>
 </mat-toolbar-row>
 </mat-toolbar>
