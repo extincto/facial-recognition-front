@@ -1,6 +1,8 @@
 export interface IUser {
   Id: number;
-  firstname: string;
-  lastname: string;
-  imageUrl: string;
+  FirstName: string;
+  LastName: string;
+  Email: string;
+  Sexe: string;
+  Visited: string;
 }

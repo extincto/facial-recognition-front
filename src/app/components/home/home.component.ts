@@ -16,31 +16,32 @@ export class HomeComponent implements OnInit {
   public webcamImage: WebcamImage;
   private trigger: Subject<void> = new Subject<void>();
   public imageAsB64: string;
+  public imageAsDataUrl: string;
 
-  constructor (private sharingService: SharedService) {}
+  constructor(private sharingService: SharedService) { }
   ngOnInit(): void {
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       });
-      this.handleImage(this.webcamImage);
+    this.handleImage(this.webcamImage);
   }
 
-  public triggerSnapshot(): void {
-    this.trigger.next();
-  }
+
 
   public toggleWebcam(): void {
     this.showWebcam = !this.showWebcam;
   }
-  public handleImage(webcamImage: WebcamImage) {
-    this.sharingService.setimageAsB64(webcamImage.imageAsDataUrl);
-    console.log('imageAsDataUrl', webcamImage.imageAsDataUrl);
+  async handleImage(webcamImage: WebcamImage) {
+    this.imageAsDataUrl = null;
+  await this.sharingService.setimageAsB64(webcamImage.imageAsDataUrl);
     this.webcamImage = webcamImage;
     this.imageAsB64 = webcamImage.imageAsDataUrl;
     return this.imageAsB64;
   }
-
+  public triggerSnapshot(): void {
+    this.trigger.next();
+  }
   public get triggerObservable(): Observable<void> {
     return this.trigger.asObservable();
   }

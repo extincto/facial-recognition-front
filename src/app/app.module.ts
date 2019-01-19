@@ -4,8 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import {WebcamModule} from 'ngx-webcam';
+import { WebcamModule } from 'ngx-webcam';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxLoadingModule } from 'ngx-loading';
+
 
 import {
   MatToolbarModule,
@@ -28,6 +31,8 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatChipsModule,
+  MatBadgeModule,
+  MatIconModule
 } from '@angular/material';
 import { LoanComponent } from './components/loan/loan.component';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +46,8 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ],
   imports: [
+    MatIconModule,
+    MatBadgeModule,
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
@@ -66,10 +73,14 @@ import { HeaderComponent } from './components/header/header.component';
     MatDialogModule,
     MatChipsModule,
     WebcamModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left'
+    }),
+    NgxLoadingModule.forRoot({})
   ],
   providers: [HeaderComponent,
-  HomeComponent],
+    HomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

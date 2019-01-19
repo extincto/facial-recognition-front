@@ -4,9 +4,29 @@
   float: right;
   margin-top: -50px;
   width: 18.5%
+}
+
+.webcam {
+  margin-top: 30px;
+  position: relative;
+  margin-left: 20px;
+  margin-right: 20px;
   
 }
-.Cam{
-  margin-top: 60px;
-  text-align: center;
+
+.snapshot {
+  margin-top: 30px;
+  width: 500px;
+  height: 500px;
+  margin-top: 10px;
+  position: relative;
+  margin-left: 20px;
+  
+}
+
+.actionBtn {
+  position: relative;
+  float: center;
+  background-color: #379EC1;
+  margin-right: 5px;
 }

@@ -1,6 +1,20 @@
-<button mat-stroked-button class="identification2" [routerLink]="['/']">Identification</button>
+<mat-card class="userPicture">
+  <mat-card-header>
+    <mat-card-title>{{User.FirstName}} {{User.LastName}}</mat-card-title>
+    <mat-card-subtitle>{{User.Email}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src={{User.ImageUrl.imageUrl}} alt="Photo de profil">
+  <mat-card-content>
+    <p>
+      Dernier Emprunt : {{User.Visited | date : 'dd/MM/yyyy h:mm'}}
+    </p>
+  </mat-card-content>
+</mat-card>
 
-<img class="userPicture" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+
+<p>Bonjour {{User.FirstName}} {{User.LastName}} !</p>
+
+
 <mat-card>
   <mat-selection-list #t>
     <mat-list-option *ngFor="let tool of toolList">
@@ -8,7 +22,7 @@
     </mat-list-option>
   </mat-selection-list>
 
-  <p>
-    Options selected: {{t.selectedOptions.selected.length}}
-  </p>
+  <button mat-raised-button class="emprunter">
+    <mat-icon  matBadgeOverlap="false" matBadge="{{t.selectedOptions.selected.length}}" MatBadgeSize='medium' matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
 </mat-card>

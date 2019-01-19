@@ -6,7 +6,7 @@
   border-radius: 15px;
   width: fit-content;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 20px;
 }
 
 .mat-pseudo-checkbox-checked {
@@ -19,10 +19,27 @@
 }
 
 .userPicture {
-  width: 240px;
-  height: 240px;
+  max-width: 350px;
   position: relative;
   float: right;
   margin-right: 100px;
   margin-top: 10px;
+  border-radius: 15px;
+  width: fit-content;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.emprunter{
+  background-color: #379EC1;
+  width: -webkit-fill-available;  
+}
+
+
+::ng-deep .mat-pseudo-checkbox-checked {
+  background: #379EC1;
+}
+
+.mat-badge-warn .mat-badge-content {
+  color: #fff;
+  background: #000000;
 }

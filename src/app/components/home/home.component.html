@@ -1,18 +1,11 @@
-
-<app-header></app-header>
 <div class="Cam">
 
   <div>
-    <webcam [height]="1200" [width]="1000" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+    <webcam  class="webcam" [height]="600" [width]="600" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
       [videoOptions]="videoOptions" (initError)="handleInitError($event)"></webcam>
-    <br />
-    <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-    <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+      <img [src]="webcamImage.imageAsDataUrl" class="snapshot" *ngIf="webcamImage" />
   </div>
-</div>
 
-<div class="snapshot" *ngIf="webcamImage">
-  <h2>Photo Prise!</h2>
-  <img [src]="webcamImage.imageAsDataUrl"/>
-  <button mat-raised-button color="warn">retake</button>
-</div>
+  <button mat-raised-button color="warn" (click)="triggerSnapshot();"><i class="material-icons">photo_camera</i></button>
+  <button mat-raised-button color="primary" class="actionBtn" (click)="triggerSnapshot();"><i class="material-icons">photo_camera</i></button>
+  <button mat-raised-button color="primary" class="actionBtn" (click)="toggleWebcam();"><i class="material-icons">toggle_on</i></button>
