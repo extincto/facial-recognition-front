@@ -5,3 +5,76 @@
 .header {
   background-color: #379EC1
 }
+
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
+//ANIMATION
+.animation {
+  margin-right: 780px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anim {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  animation: loading-rotation 5s linear infinite;
+  border: solid 1px #000000;
+  border-radius: 50%;
+  margin: 10px;
+}
+@media only screen and (min-width: 200px) {
+  .anim {
+    width: 35px;
+    height: 35px;
+    margin: 10px;
+  }
+}
+
+@keyframes loading-rotation {
+  50% {border-color: #f5f5f5;}
+  100% {transform: rotate(360deg);}
+}
+
+.anim div {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: loading-planet 5s linear infinite;
+}
+@media only screen and (min-width: 200px) {
+  .anim div {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+@keyframes loading-planet {
+  50% {background: #000000;}
+}
+
+.text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: #000000;
+  animation: loading-text 5s linear infinite;
+}
+@media only screen and (min-width: 768px) {
+  .text {
+    font-size: 20px;
+    letter-spacing: 0.3em;
+  }
+}
+
+@keyframes loading-text {
+  50% {color: rgb(0, 0, 0);}
+}

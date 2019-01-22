@@ -4,6 +4,17 @@
   <span class="example-spacer"></span>
   <webcam [height]="1" [width]="2" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"> </webcam>
   
+<div class="animation" *ngIf="isloggedin">
+  <section class="text"><div>W</div></section>
+  <section class="text"><div>E</div></section>
+  <section class="text"><div>L</div></section>
+  <section class="text"><div>C</div></section>
+  <section class="anim">
+    <div></div>
+  </section>
+  <section class="text"><div>M</div></section>
+  <section class="text"><div>E</div></section>
+  </div>
   <form #customLoadingTemplate>
   <button mat-stroked-button class="identification" (click)="login(image64)" type="submit" *ngIf="!isloggedin">S'identifier</button>
 </form>
