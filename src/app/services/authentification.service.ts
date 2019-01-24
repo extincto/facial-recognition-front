@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { IUser } from '../models/IUser';
 
 const authentication = 'api/login';
-const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 @Injectable({
   providedIn: 'root'
 })

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ITools } from 'src/app/models/ITools';
 import { ToolService } from 'src/app/services/tools/tool.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { MatSelectionList } from '@angular/material';
 
 @Component({
   selector: 'app-loan',
@@ -15,7 +16,8 @@ export class LoanComponent implements OnInit {
   Quantity: number;
   User: Object;
   isloggedin: boolean;
-  tool_selected: number;
+  toolist_id: any;
+  @ViewChild('tool') tool_list: MatSelectionList;
 
   constructor(private toolService: ToolService, private sharingService: SharedService) { }
 
@@ -23,7 +25,6 @@ export class LoanComponent implements OnInit {
     this.getTools();
     this.User = this.sharingService.GetUser();
     this.isloggedin = this.sharingService.getLoggedInStatus();
-
   }
   getTools() {
     this.toolService.tools().subscribe((tools) => {
@@ -31,13 +32,16 @@ export class LoanComponent implements OnInit {
 
     });
   }
-  getValue(event: any) {
-    // if (event.source.selected) {
-    //   this.tool_selected = event.selectedOptions.selected.length;
-    //   return this.tool_selected;
-    // }
-    // console.log(this.tool_selected);
+  onSelectionChange() {
+    console.log(this.onSelection());
+  }
+  onSelection() {
+    this.toolist_id = this.tool_list.selectedOptions.selected.map(t => t.value.id);
+    return this.toolist_id;
   }
 
-
+  posttools() {
+    this.toolService.postToollist(this.toolist_id);
+    console.log(this.toolist_id);
+  }
 }
