@@ -29,9 +29,9 @@
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
 }
 
-.emprunter{
+.emprunter {
   background-color: #379EC1;
-  width: -webkit-fill-available;  
+  width: -webkit-fill-available;
 }
 
 
@@ -42,4 +42,13 @@
 .mat-badge-warn .mat-badge-content {
   color: #fff;
   background: #000000;
+}
+
+.grey_tools {
+  color: rgb(207, 207, 207);
+}
+
+::ng-deep .hide_quantity{
+  color: #fff;
+
 }

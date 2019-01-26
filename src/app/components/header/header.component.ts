@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
   public url: string;
   public id: number;
+  ToolId: any[];
   public loading = false;
   public isloggedin = false;
 
@@ -58,16 +59,16 @@ export class HeaderComponent implements OnInit {
   }
 
   login(image64: string) {
+    this.loading = true;
     try {
       this.primaryColour = PrimaryBlue;
       this.secondaryColour = SecondaryBlue;
-      this.loading = true;
       this.isloggedin = false;
       this.imageAsDataUrl = this.sharingService.getimageAsB64();
       image64 = this.imageAsDataUrl;
       this.authService.login(image64).subscribe((user: IUser) => {
-        this.loading = false;
         if (user) {
+          this.loading = false;
           this.isloggedin = true;
           this.sharingService.setLoggedInStatus(this.isloggedin);
           this.Id = user.Id;
@@ -76,12 +77,19 @@ export class HeaderComponent implements OnInit {
           this.LastName = user.LastName;
           this.Sexe = user.Sexe;
           this.Visited = user.Visited;
+          this.ToolId = user.ToolId;
+          this.sharingService.setToolId(this.ToolId);
           this.sharingService.SetUser(user);
           this.router.navigate(['loan']);
+        } else {
         }
+      }, err => {
+        this.isloggedin = false;
+        this.loading = false;
+        this.sharingService.SetLoading(this.loading);
+        this.toastr.error('Identification non valide!');
       });
     } catch (e) {
-      this.toastr.error('Votre photo ne figure pas dans notre base de données !');
     }
   }
   logoff() {

@@ -15,11 +15,13 @@
 
 <mat-card>
   <mat-selection-list #tool (selectionChange)="onSelectionChange()">
-    <mat-list-option *ngFor="let tool of toolList" [value]= "tool">
+    <mat-list-option *ngFor="let tool of toolList" [value]="tool" [selected]="ToolId.includes(tool.id)" [ngClass]="{
+      'hide_quantity': tool.quantity, 'grey_tools': tool.quantity === 0 }">
       {{tool.name}}
     </mat-list-option>
   </mat-selection-list>
-  <button mat-raised-button class="emprunter" (click)="posttools()">
-    <mat-icon  matBadgeOverlap="false" matBadge="{{tool.selectedOptions.selected.length}}" MatBadgeSize='medium' matBadgeColor="warn">shopping_cart</mat-icon>
+  <button mat-raised-button class="emprunter" (click)="posttools(toolist_id)">
+    <mat-icon matBadgeOverlap="false" matBadge="{{tool.selectedOptions.selected.length}}" MatBadgeSize='medium'
+      matBadgeColor="warn">shopping_cart</mat-icon>
   </button>
 </mat-card>

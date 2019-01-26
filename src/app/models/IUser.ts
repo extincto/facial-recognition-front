@@ -5,4 +5,5 @@ export interface IUser {
   Email: string;
   Sexe: string;
   Visited: string;
+  ToolId: Array<any>;
 }

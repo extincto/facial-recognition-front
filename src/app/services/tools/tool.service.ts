@@ -18,7 +18,7 @@ export class ToolService {
     return this.http.get<ITools>(toolList);
   }
 
-  postToollist(tool_list) {
-    return this.http.post<ITools[]>(postToollist, { tool_list });
+  posttools(tool_list) {
+    return this.http.post<ITools[]>(postToollist, tool_list);
   }
 }
