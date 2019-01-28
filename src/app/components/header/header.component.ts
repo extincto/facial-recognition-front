@@ -85,7 +85,6 @@ export class HeaderComponent implements OnInit {
             this.router.navigate(['return']);
           }
           this.sharingService.SetUser(user);
-        } else {
         }
       }, err => {
         this.isloggedin = false;

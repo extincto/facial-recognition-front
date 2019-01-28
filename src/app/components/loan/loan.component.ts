@@ -28,7 +28,6 @@ export class LoanComponent implements OnInit {
 
   ngOnInit() {
     this.ToolId = this.sharingService.getToolId();
-    console.log('ToolId', this.ToolId);
     this.getTools();
     this.getToolsQuantity();
 
@@ -42,7 +41,6 @@ export class LoanComponent implements OnInit {
     this.toolService.tools().subscribe((tools) => {
       this.toolList = tools;
       this.Quantity = tools.quantity;
-      console.log('toolist', this.toolList);
     });
   }
 
@@ -57,8 +55,6 @@ export class LoanComponent implements OnInit {
   }
   onSelectionChange() {
     this.toolist_id = this.tool_list.selectedOptions.selected.map(t => t.value.id);
-    // this.deselectedtool = this.tool_list.selectedOptions.changed.asObservable;
-    // console.log('deselect', this.deselectedtool);
     return this.toolist_id;
   }
   onSelection() {
@@ -68,7 +64,6 @@ export class LoanComponent implements OnInit {
     if (toolist_id) {
       try {
         this.toolService.posttools(toolist_id).subscribe((tools) => {
-          console.log('data', toolist_id);
         });
         this.toastr.success('Emprunt réussie !');
       } catch (e) {

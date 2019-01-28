@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   public toggleWebcam(): void {
     this.showWebcam = !this.showWebcam;
   }
-  async handleImage(webcamImage: WebcamImage) {
+  async handleImage(webcamImage?: WebcamImage) {
     this.imageAsDataUrl = null;
     await this.sharingService.setimageAsB64(webcamImage.imageAsDataUrl);
     this.webcamImage = webcamImage;
