@@ -1,0 +1,55 @@
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 15px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .mat-pseudo-checkbox-checked {
+    background: #379EC1;
+  }
+  
+  .identification2 {
+    background-color: #379EC1;
+    margin-top: 10px;
+  }
+  
+  .userPicture {
+    max-width: 350px;
+    position: relative;
+    float: right;
+    margin-right: 100px;
+    margin-top: 10px;
+    border-radius: 15px;
+    width: fit-content;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  }
+  
+  .emprunter {
+    background-color: #379EC1;
+    width: -webkit-fill-available;
+  }
+  
+  
+  ::ng-deep .mat-pseudo-checkbox-checked {
+    background: #379EC1;
+  }
+  
+  .mat-badge-warn .mat-badge-content {
+    color: #fff;
+    background: #000000;
+  }
+  
+  .grey_tools {
+    color: rgb(207, 207, 207);
+  }
+  
+  ::ng-deep .hide_quantity{
+    color: #fff;
+  
+  }
+  

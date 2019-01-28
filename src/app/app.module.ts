@@ -37,13 +37,15 @@ import {
 import { LoanComponent } from './components/loan/loan.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { ReturnComponent } from './components/return/return.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoanComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReturnComponent
   ],
   imports: [
     MatIconModule,

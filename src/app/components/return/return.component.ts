@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ITools } from 'src/app/models/ITools';
+import { MatSelectionList } from '@angular/material';
 import { ToolService } from 'src/app/services/tools/tool.service';
 import { SharedService } from 'src/app/services/shared.service';
-import { MatSelectionList } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-loan',
-  templateUrl: './loan.component.html',
-  styleUrls: ['./loan.component.scss']
+  selector: 'app-return',
+  templateUrl: './return.component.html',
+  styleUrls: ['./return.component.scss']
 })
-export class LoanComponent implements OnInit {
+export class ReturnComponent implements OnInit {
   toolList: ITools;
   Id: number;
   Name: string;
@@ -21,6 +21,7 @@ export class LoanComponent implements OnInit {
   deselectedtool: any;
   idUser: number;
   ToolId: any[];
+  EmptyArray: [];
   public grey_tools = 'grey';
   @ViewChild('tool') tool_list: MatSelectionList;
 
@@ -49,8 +50,8 @@ export class LoanComponent implements OnInit {
   getToolsQuantity() {
     try {
       this.toolService.tools().subscribe((tools) => {
-          this.toolList = tools;
-          this.Quantity = tools.quantity;
+        this.toolList = tools;
+        this.Quantity = tools.quantity;
       });
     } catch (e) { }
 
@@ -58,19 +59,20 @@ export class LoanComponent implements OnInit {
   onSelectionChange() {
     this.toolist_id = this.tool_list.selectedOptions.selected.map(t => t.value.id);
     // this.deselectedtool = this.tool_list.selectedOptions.changed.asObservable;
-    // console.log('deselect', this.deselectedtool);
+    console.log('toolist_id', this.toolist_id);
     return this.toolist_id;
   }
   onSelection() {
   }
 
-  posttools(toolist_id): any {
+  retourtools(toolist_id): any {
     if (toolist_id) {
       try {
-        this.toolService.posttools(toolist_id).subscribe((tools) => {
+        console.log('toolist_id', toolist_id);
+        this.toolService.retourtools(toolist_id).subscribe((tools) => {
           console.log('data', toolist_id);
         });
-        this.toastr.success('Emprunt réussie !');
+        this.toastr.success('Retour réussie !');
       } catch (e) {
         console.log('Exception posttools :', e);
       }

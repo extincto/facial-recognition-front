@@ -79,8 +79,12 @@ export class HeaderComponent implements OnInit {
           this.Visited = user.Visited;
           this.ToolId = user.ToolId;
           this.sharingService.setToolId(this.ToolId);
+          if (this.ToolId.length === 0) {
+            this.router.navigate(['loan']);
+          } else {
+            this.router.navigate(['return']);
+          }
           this.sharingService.SetUser(user);
-          this.router.navigate(['loan']);
         } else {
         }
       }, err => {
@@ -93,10 +97,8 @@ export class HeaderComponent implements OnInit {
     }
   }
   logoff() {
-
     this.isloggedin = false;
     this.sharingService.setLoggedInStatus(this.isloggedin);
-
   }
 
 
